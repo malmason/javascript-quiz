@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Fundamentals</title>
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="header">
+    <div class="title">
+      <h1>Javascript Fundamentals</h1>
+    </div>
+  </div>
+  <main class="container">    
+    <section class="question-container">
+      <h2>Multiple Choice Javascript Quiz</h2>
+      <p>
+        Welcome to the Javascript Fundamentals Quiz. This is a timed quiz,
+        you will have 5 minutes to complete it.
+      </p>
+      <p> 
+        The questions are multiple choice, you will lose 10 seconds on the timer
+        for incorrect responses.
+      </p>
+      <div class="question-area">
+        <span class="current-question"></span>
+        <div class="answer">
+          <ol>
+            <li class="selected-answer"><input type="radio" id="ans1" class="ans" name="ans" value="1"><label for="ans1" id="ans1label" value="1"></label></li>
+            <li class="selected-answer"><input type="radio" id="ans2" class="ans" name="ans" value="2"><label for="ans2" id="ans2label" value="2"></label></li>
+            <li class="selected-answer"><input type="radio" id="ans3" class="ans" name="ans" value="3"><label for="ans3" id="ans3label" value="3"></label></li>
+            <li class="selected-answer"><input type="radio" id="ans4" class="ans" name="ans" value="4"><label for="ans4" id="ans4label" value="4"></label></li>
+          </ol>
+        </div>
+      </div>
+   
+      <div class="result-area">
+        <div class="timer-container">
+          <p>Time Remaining: <span id="timer">5:00</span></p>
+        </div>
+        <button class="btnStart"><i class="fas fa-play-circle"></i> Start Quiz</i></button>
+        <button type = "button" disabled class="btnPrev"><i class="fas fa-arrow-circle-left"></i> Prev</button>
+        <button type = "button" disabled class="btnNext">Next <i class="fas fa-arrow-circle-right"></i></button> 
+        
+        <p>Result: <span class="result"></span></p>
+      </div>
+      <div class="save">
+        <label for="user-initials">Enter your initials: </label><input type="text" name="user-initials">
+        <button type = "button" disabled class="btnSave">Save <i class="fas fa-save"></i></button> 
+      </div>
+    </section>
+
+    <section class="score-container">
+      <div class="high-scores">
+        <h2>High Scores</h2>
+        <p class="saved-score">1.</p>
+        <p class="saved-score">2.</p>
+        <p class="saved-score">3.</p>
+        <p class="saved-score">4.</p>
+        <p class="saved-score">5.</p>
+        <p class="saved-score">6.</p>
+        <p class="saved-score">7.</p>
+        <p class="saved-score">8.</p>
+        <p class="saved-score">9.</p>
+        <p class="saved-score">10.</p>
+      </div>
+    </section>
+    <section class="history-container"> 
+      <div class="score-history">
+        <h2>Current Results</h2>
+        <p class="quest-outcome">1.</p>
+        <p class="quest-outcome">2.</p>
+        <p class="quest-outcome">3.</p>
+        <p class="quest-outcome">4.</p>
+        <p class="quest-outcome">5.</p>
+        <p class="quest-outcome">6.</p>
+        <p class="quest-outcome">7.</p>
+        <p class="quest-outcome">8.</p>
+        <p class="quest-outcome">9.</p>
+        <p class="quest-outcome">10.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>

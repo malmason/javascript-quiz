@@ -1,0 +1,117 @@
+:root {
+  --main-color: #b3b300;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.question-container,
+.score-container,
+.history-container {
+  padding: 10px 0px 0px 5px;
+}
+
+.title {
+  width: 80%;
+  margin-left: 1%;
+  margin-bottom: 5px;
+}
+.header {
+  background-image: url(../images/js.jfif);
+  background-position: left;
+  background-repeat: no-repeat;
+  width: 10%;
+  margin-bottom: 5px;
+  border-bottom: 3px solid var(--main-color);
+}
+.high-scores,
+.score-history {
+  border-left: 2px dashed var(--main-color);
+  padding-left: 20px;
+}
+
+h1 {
+  color: var(--main-color);
+  text-align: center;
+  margin-left: 350px;
+  padding-top: 20px;
+  font-size: 2.5em;
+  text-shadow: 2px 1px black;
+}
+.question-container {
+  flex-grow: 2;
+}
+.score-container,
+.history-container {
+  flex-grow: 1;
+}
+.container,
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  margin-left: 1%;
+  height: 120px;
+}
+h2 {
+  font-size: 1.25em;
+  background-color: var(--main-color);
+  text-align: center;
+  border-radius: 5px;
+  padding: 3px 0px;
+  color: white;
+}
+.result-area {
+  text-align: center;
+}
+.history-container p,
+.high-scores p,
+.question-container p {
+  line-height: 0.7;
+}
+li:hover,
+.btnStart,
+.btnPrev,
+.btnNext {
+  cursor: pointer;
+}
+.btnStart,
+.btnPrev,
+.btnNext {
+  background-color: white;
+  color: black;
+  border: 2px solid var(--main-color);
+  height: 50px;
+  width: 100px;
+  margin-right: 10px;
+}
+.answer label {
+  width: 120px;
+}
+.btnStart:hover,
+.btnPrev:hover,
+.btnNext:hover,
+.answer label:hover {
+  background-color: var(--main-color);
+  color: white;
+  cursor: pointer;
+}
+.selected-answer {
+  margin-bottom: 15px;
+}
+.save {
+  text-align: center;
+}
+.question-area {
+  margin-top: 30px;
+}
+.timer-container {
+  border: 2px solid var(--main-color);
+  width: 400px;
+  margin-bottom: 15px;
+  margin-left: 270px;
+  font-size: 1.2em;
+  font-family: "Orbitron", sans-serif;
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 5px;
+}
