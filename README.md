@@ -1,4 +1,4 @@
-# Javascript Fundamentals
+# 💻 Javascript Fundamentals
 
 ![Javascript Banner](assets/images/jsbanner.jfif)
 
@@ -6,12 +6,12 @@ This application is a 10 question quiz on Javascript Fundamentals. The quiz is m
 
 ---
 
-## Criteria
+## 📋 Criteria
 
-- You will have 5 minutes to complete the quiz
+- You will have 5 minutes 🕔 to complete the quiz
 - A 10 second penalty will be assessed for incorrect answers
 - Questions are multiple choice and cannot be changed
-- The quiz will allow you to save your initials to a high score list
+- The quiz ✏️ will allow you to save your initials to a high score list
 - Results for each question are displayed once answered
 - An option to clear the high score history
 
