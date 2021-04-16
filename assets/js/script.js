@@ -147,6 +147,7 @@ function startQuiz() {
   getResults();
   startTimer();
   loadQuestion();
+  btnStart.classList.remove("blink");
 };
 function prevQuestion() {
   if(QuestionNo!==1){
@@ -235,6 +236,7 @@ function checkAnswer(){
     };
     userInitials.disabled = false;
     userInitials.focus();
+    btnStart.classList.add("blink");
   }
 
   // Update the result message display. 
@@ -250,6 +252,7 @@ function checkAnswer(){
     userInitials.focus(); 
     disableInputs();   
     testEnded = true;
+    btnStart.classList.add("blink");
   }
 };
 
