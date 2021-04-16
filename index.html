@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Javascript Fundamentals</title>
-  <link rel="stylesheet" href="./assets/css/styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="./assets/css/styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -28,7 +28,7 @@
         for incorrect responses.
       </p>
       <div class="question-area">
-        <span class="current-question"></span>
+        <p class="current-question"></p>
         <div class="answer">
           <ol>
             <li class="selected-answer"><input type="radio" id="ans1" class="ans" name="ans" value="1"><label for="ans1" id="ans1label" value="1"></label></li>
@@ -50,7 +50,8 @@
         <p>Result: <span class="result"></span></p>
       </div>
       <div class="save">
-        <label for="user-initials">Enter your initials: </label><input type="text" name="user-initials">
+        <label for="user-initials">Enter your initials: </label>
+        <input type="text" name="user-initials" id="user-initials">
         <button type = "button" disabled class="btnSave">Save <i class="fas fa-save"></i></button> 
       </div>
     </section>
@@ -69,6 +70,9 @@
         <p class="saved-score">9.</p>
         <p class="saved-score">10.</p>
       </div>
+      <div class="center">
+        <button class="btnClear"><i class="fas fa-trash-alt"></i> Clear Scores</i></button>
+     </div>
     </section>
     <section class="history-container"> 
       <div class="score-history">

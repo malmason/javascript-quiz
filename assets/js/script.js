@@ -7,11 +7,13 @@ var ans1label = document.querySelector("#ans1label");
 var ans2label = document.querySelector("#ans2label");
 var ans3label = document.querySelector("#ans3label");
 var ans4label = document.querySelector("#ans4label");
+var userInitials = document.querySelector("#user-initials");
 var timer = document.querySelector("#timer");
 var btnStart = document.querySelector(".btnStart");
 var btnPrev = document.querySelector(".btnPrev");
 var btnNext = document.querySelector(".btnNext");
 var btnSave = document.querySelector(".btnSave");
+var btnClear = document.querySelector(".btnClear");
 var qResult = document.querySelector(".result");
 var scoreHistory = document.querySelectorAll(".quest-outcome");
 var answer = document.querySelectorAll("input[type=radio]");
@@ -24,6 +26,7 @@ var minute = 4;
 var second = 60;
 var totalCorrect = 0;
 var timerInterval = "";
+var testEnded = false;
 
  // Stores the questions, options, and answers, in key/value pairs. Contains a second
  // array to store the question option. 
@@ -97,10 +100,17 @@ function init(){
   second = 60;
   totalCorrect = 0;
   unanswered=[1,2,3,4,5,6,7,8,9,10];
+  userInitials.value = "";
+  testEnded = false;
   // make sure the current results have been cleared. 
   for (i=0; i < scoreHistory.length; i++) {
     scoreHistory[i].textContent = i+1 + ". ";
   }
+  // Enable the radio buttons and the text box. 
+  let radios = document.getElementsByTagName('input');
+  for (i=0; i < radios.length; i++) {
+     radios[i].disabled = false;
+  };
 };
 
 function startTimer(){
@@ -108,6 +118,8 @@ function startTimer(){
     if(minute == 0 && second == 1) {
       timer.textContent = "00:00";
       clearInterval();
+      disableInputs();
+      testEnded = true;
       qResult.textContent = "The time has expired, the quiz is over!"
       btnStart.disabled = false; // allows for a new quiz to be started.
       btnSave.disabled = false; 
@@ -164,6 +176,13 @@ function loadQuestion() {
      qResult.textContent = "";
 };
 function checkAnswer(){
+  // Check to see if the test has ended. 
+  for (i=0; i < 1; i++){
+    if(testEnded) {
+      break;
+    }
+  };
+
   const index = unanswered.indexOf(QuestionNo);
   // Remove the question number from the unanswered array. 
   if (index > -1) {
@@ -185,6 +204,8 @@ function checkAnswer(){
     selectedAns = 4;
   };
 
+  btnNext.focus();
+
   if(selectedAns == correctAns){
      scoreHistory[QuestionNo-1].textContent = QuestionNo + ". Correct!";
      totalCorrect++;
@@ -203,7 +224,18 @@ function checkAnswer(){
     // stop the interval and start again with the adjusted time of minus 10 seconds for an incorrect answer. 
     clearInterval(timerInterval);
     startTimer();
+    
   };
+
+  function disableInputs() {
+    // Disable the radion buttons and text field so data cannot be changed after the test ends. 
+    let radios = document.getElementsByTagName('input');
+    for (i=0; i < radios.length; i++) {
+       radios[i].disabled = true;
+    };
+    userInitials.disabled = false;
+    userInitials.focus();
+  }
 
   // Update the result message display. 
   qResult.textContent = "The correct answer is: " + correctAns + " you selected: " + selectedAns;
@@ -214,20 +246,29 @@ function checkAnswer(){
     btnPrev.disabled = true;
     btnNext.disabled = true;
     btnSave.disabled = false;
+    qResult.textContent = "Finished, you scored: " + Math.floor(totalCorrect / 10 * 100) + "%, enter your initials below to save your score!";
+    userInitials.focus(); 
+    disableInputs();   
+    testEnded = true;
   }
 };
 
 function saveResults() {
   btnSave.preventDefault;
-  // Change this to a hidden div that displays when the quiz is over. 
-  var yourInitials = prompt("Enter in your initials");
 
+  if (userInitials.length <1 ){
+    alert("Please enter your initials!");
+    userInitials.focus();
+  } else {
+    var yourInitials = userInitials.value;
+  };
+  
   var highScore = {
     initials: yourInitials,
     score: Math.floor(totalCorrect / 10 * 100)
   }
 
-  var a = [];
+  var a = []; // Empty array to hold the localstorage objects
 
   // Parse the data back into an array of objects. 
   a = JSON.parse(localStorage.getItem("highScores")) || [];
@@ -244,19 +285,43 @@ function getResults() {
   var priorResults = JSON.parse(localStorage.getItem("highScores")) || [];
   console.log(priorResults);
   
+
+  priorResults.sort(sortArray("score"));
+
   // Loop through the array and access the correct index and key value pairs to display under high scores. 
   if(priorResults !== null){
     for(i=0; i < priorResults.length; i++){
-      leaderBoard[i].textContent = i+1 + ". " + priorResults[i].initials + " - " + priorResults[i].score
+      leaderBoard[i].textContent = i+1 + ". " + priorResults[i].initials + " - " + priorResults[i].score + "%"
     }
   }
 };
+
+// Sorts the JSON objects based on the column passed in, this is a desc sort, reverse the < > symbols to sort asc
+function sortArray(column) {
+  return function(a,b) {
+    if (a[column] < b[column]) {
+      return 1;
+    } else if (a[column] > b[column]) {
+      return -1;
+    }
+    return 0;
+  }
+}
+
+function clearScores() {
+  localStorage.clear();
+  window.location.reload();
+}
+
+// TODO: Create a function to clear the high score history, add a button to the HTML page for this and a listener.
+
 
 // Event listeners for all buttons and the 4 radio buttons. 
 btnStart.addEventListener("click",startQuiz);
 btnPrev.addEventListener("click",prevQuestion);
 btnNext.addEventListener("click",nextQuestion);
 btnSave.addEventListener("click",saveResults);
+btnClear.addEventListener("click",clearScores);
 ans1.addEventListener("click", checkAnswer);
 ans2.addEventListener("click", checkAnswer);
 ans3.addEventListener("click", checkAnswer);
